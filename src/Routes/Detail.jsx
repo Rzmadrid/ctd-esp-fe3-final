@@ -6,7 +6,7 @@ import React from 'react'
 const Detail = () => {
  
   // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
-
+  const url = "https://jsonplaceholder.typicode.com/users/:id"
   return (
     <>
       <h1>Detail Dentist id </h1>
