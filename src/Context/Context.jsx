@@ -18,6 +18,7 @@ const Context = ({ children }) => {
           .then((res) => {
             console.log(res.data);
             setUsers(res.data);
+           
           })
           .catch((err) => {
             console.log(err);

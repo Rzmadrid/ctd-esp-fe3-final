@@ -12,7 +12,12 @@ const Card = ({ user } ) => {
   return (
     <div className="card">
         {/* En cada card deberan mostrar en name - username y el id */}
-        
+        <Link to={`/detail/${user.id}`}>
+          {/* <img src="./images/doctor.jpg" alt={user.name} /> */}
+          <h3>{user.name}</h3>
+          <h3>{user.username}</h3>
+          <h3>{user.id}</h3>
+        </Link>
         {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
 
         {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
@@ -23,8 +28,4 @@ const Card = ({ user } ) => {
 
 export default Card;
 
-{/* <Link to={`/detail/${user.id}`}>
-          <h3>{user.name}</h3>
-          <h3>{user.username}</h3>
-          <h3>{user.id}</h3>
-        </Link> */}
+{/*  */}

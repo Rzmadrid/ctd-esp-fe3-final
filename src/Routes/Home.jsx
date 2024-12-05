@@ -6,7 +6,6 @@ import { useUserStates } from '../Context/Context';
 
 const Home = () => {
   const { users } = useUserStates();
-
   return (
     <main className="" >
       <h1>Home</h1>
