@@ -25,7 +25,7 @@ const Detail = () => {
       {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
       {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
       <h2>{user.name}</h2>
-      {/* <img src={char.image} alt="" /> */}
+      <img src="/public/images/doctor.jpg" alt='Doctor' className='imgDetail'/> 
       <h4> {user.email}</h4>
       <h4>{user.phone}</h4>
       <h4>{user.website}</h4>

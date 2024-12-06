@@ -10,6 +10,7 @@ const Context = ({ children }) => {
     const url = "https://jsonplaceholder.typicode.com/users";
 
     useEffect(() => {
+        //console.log(favs)
         localStorage.setItem("favs", JSON.stringify(favs));
       }, [favs]);
 

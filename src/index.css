@@ -75,6 +75,7 @@ form{
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   width: 200px;
   padding: 0.5rem 0.5rem 0 0.5rem;
   border: 0.5px solid rgb(136, 136, 136);
@@ -121,12 +122,27 @@ tr:nth-child(even) {
   color: white;
 }
 
-.detallea{
-  display: flex;
-  justify-content: space-around;
+.detalle{
+  /*display: flex;*/
+  justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: fit-content;
+  text-align: center;
+  /*width: fit-content;*/
+  width:auto;
   padding: 0.5rem 0.5rem 0 0.5rem;
   border: 0.5px solid rgb(136, 136, 136);
+}
+
+.imgDetail{
+ 
+    clip-path: circle(50%);
+    width: 400px;
+    height: 400px;
+}
+
+.imgHome{
+  clip-path: circle(50%);
+  width: 200px;
+  height: 200px;
 }

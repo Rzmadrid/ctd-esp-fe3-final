@@ -1,37 +1,55 @@
-import React from "react";
+import  { useState } from "react";
 
 
 const Form = () => {
   //Aqui deberan implementar el form completo con sus validaciones
+  const [client, setClient] = useState({
+    nombre: "",
+    email:""
+  });
+const [mostrar, setMostrar] = useState(false);
+const [error, setError] = useState(false);
 
+const handleSubmit = (event) => {
+    event.preventDefault();
+    if (
+      client.nombre.trim().length >= 3 &&
+      client.email.trim().length >= 6
+    ) {
+      setMostrar(true);
+      setError(false);
+    } else {
+      setError(true);
+    }
+  };
   return (
     <div>
       {mostrar ? (
-        <h4 style={{ color: "red" }}>
-        Gracias {user.nombre}, te contactaremos cuando antes vía mail
+        <h4 style={{ color: "green" }}>
+        Gracias {client.nombre}, te contactaremos cuanto antes vía mail
       </h4>
       ) : (
       <form onSubmit={handleSubmit}>
       <label>Nombre:</label>
           <input
             type="text" 
-            value={user.nombre}
+            value={client.nombre}
             onChange={(event) =>
-              setUser({ ...user, nombre: event.target.value })
+              setClient({ ...client, nombre: event.target.value })
             }
           />
           <label>Email:</label>
           <input
             type="email"
-            value={user.email}
+            value={client.email}
             onChange={(event) =>
-              setUser({ ...user, canFavorita: event.target.value })
+              setClient({ ...client, email: event.target.value })
             }
           />
           <button>Enviar</button>
           {error ? (
             <h4 style={{ color: "red" }}>
-              Por favor chequea que la información sea correcta
+              Por favor verifique su información nuevamente
             </h4>
           ) : null}
       </form>

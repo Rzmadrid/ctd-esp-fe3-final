@@ -6,6 +6,7 @@ const Card = ({ user } ) => {
  
   const addFav = ()=>{
     // Aqui iria la logica para agregar la Card en el localStorage
+    console.log(user)
     setFavs((favs) => [...favs, user]);
   }
 
@@ -13,7 +14,7 @@ const Card = ({ user } ) => {
     <div className="card">
         {/* En cada card deberan mostrar en name - username y el id */}
         <Link to={`/detail/${user.id}`}>
-          {/* <img src="./images/doctor.jpg" alt={user.name} /> */}
+          <img src="/public/images/doctor.jpg" alt='doctor' className='imgHome'/> 
           <h3>{user.name}</h3>
           <h3>{user.username}</h3>
           <h3>{user.id}</h3>
