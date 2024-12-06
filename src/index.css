@@ -146,3 +146,6 @@ tr:nth-child(even) {
   width: 200px;
   height: 200px;
 }
+.favButton:hover{
+  background-color:lightblue;
+}
