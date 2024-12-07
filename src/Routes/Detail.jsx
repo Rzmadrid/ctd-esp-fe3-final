@@ -10,7 +10,7 @@ const Detail = () => {
 
   useEffect(() => {
     axios(url).then((res) => {
-      console.log(res.data);
+      
       setUser(res.data);
     });
   }, []);

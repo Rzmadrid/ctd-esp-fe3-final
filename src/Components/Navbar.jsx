@@ -8,7 +8,6 @@ const Navbar = () => {
   const { dispatch, state } = useUserStates();
 
   const toggleTheme = ()=>{   
-    console.log(state.theme)
     dispatch({ type: "TOGGLE_THEME", payload: !state.theme });
   }
 

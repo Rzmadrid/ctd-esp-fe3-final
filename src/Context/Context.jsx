@@ -23,7 +23,7 @@ const Context = ({ children }) => {
       useEffect(() => {
         axios(url)
           .then((res) => {
-            console.log(res.data);
+           
             dispatch({ type: "GET_USERS", payload: res.data });
            
           })
