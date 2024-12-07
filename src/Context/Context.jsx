@@ -1,24 +1,30 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import { reducer } from "../reducers/reduce";
 
 const UserStates = createContext();
 const lsFavs = JSON.parse(localStorage.getItem("favs")) || [];
 
+const initialState = {
+  favs: lsFavs,
+  users: [],
+  theme: "",
+};
+
 const Context = ({ children }) => {
-    const [users, setUsers] = useState([]);
-    const [favs, setFavs] = useState(lsFavs);
+    const [state, dispatch] = useReducer(reducer, initialState);
+   
     const url = "https://jsonplaceholder.typicode.com/users";
 
     useEffect(() => {
-        //console.log(favs)
-        localStorage.setItem("favs", JSON.stringify(favs));
-      }, [favs]);
+        localStorage.setItem("favs", JSON.stringify(state.favs));
+      }, [state.favs]);
 
       useEffect(() => {
         axios(url)
           .then((res) => {
             console.log(res.data);
-            setUsers(res.data);
+            dispatch({ type: "GET_USERS", payload: res.data });
            
           })
           .catch((err) => {
@@ -26,9 +32,15 @@ const Context = ({ children }) => {
           });
       }, []);
 
+    useEffect(() => {
+
+        document.body.setAttribute('class', state.theme);
+    
+    }, [state.theme]);
+    
   return (
     <div>
-        <UserStates.Provider value={{ favs, users, setFavs }}>
+        <UserStates.Provider value={{ state, dispatch }}>
          {children}
         </UserStates.Provider>
     </div>

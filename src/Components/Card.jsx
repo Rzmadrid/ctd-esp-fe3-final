@@ -2,31 +2,24 @@ import { Link } from "react-router-dom";
 import { useUserStates } from "../Context/Context";
 
 const Card = ({ user } ) => {
-  const { setFavs } = useUserStates();
- 
-  const addFav = ()=>{
-    // Aqui iria la logica para agregar la Card en el localStorage
-    console.log(user)
-    setFavs((favs) => [...favs, user]);
+  const { dispatch, state } = useUserStates();
+  const findFav = state.favs.find((fav) => fav.id === user.id);
+
+  const toggleFav = ()=>{   
+    dispatch({ type: findFav ? "DELETE_FAV" : "ADD_FAV", payload: user });
   }
 
   return (
     <div className="card">
-        {/* En cada card deberan mostrar en name - username y el id */}
         <Link to={`/detail/${user.id}`}>
           <img src="/images/doctor.jpg" alt='doctor' className='imgHome'/> 
           <h3>{user.name}</h3>
           <h3>{user.username}</h3>
           <h3>{user.id}</h3>
         </Link>
-        {/* No debes olvidar que la Card a su vez servira como Link hacia la pagina de detalle */}
-
-        {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-        <button onClick={addFav} className="favButton">Add fav ⭐</button>
+        <button onClick={toggleFav} className="favButton">{ findFav ? "⭐" : "Add fav ✩"}</button>
     </div>
   );
 };
 
 export default Card;
-
-{/*  */}

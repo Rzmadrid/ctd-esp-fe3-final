@@ -2,7 +2,7 @@ import  { useState } from "react";
 
 
 const Form = () => {
-  //Aqui deberan implementar el form completo con sus validaciones
+ 
   const [client, setClient] = useState({
     nombre: "",
     email:""
@@ -12,9 +12,10 @@ const [error, setError] = useState(false);
 
 const handleSubmit = (event) => {
     event.preventDefault();
+    const regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/; // [0-9]
     if (
-      client.nombre.trim().length >= 3 &&
-      client.email.trim().length >= 6
+      client.nombre.trim().length > 5 && 
+      regexMail.test(client.email.trim())
     ) {
       setMostrar(true);
       setError(false);
@@ -23,14 +24,14 @@ const handleSubmit = (event) => {
     }
   };
   return (
-    <div>
+    <div className = "divForm" >
       {mostrar ? (
-        <h4 style={{ color: "green" }}>
+        <h4 style={{ color: "#4CAF50" }}>
         Gracias {client.nombre}, te contactaremos cuanto antes vía mail
       </h4>
       ) : (
       <form onSubmit={handleSubmit}>
-      <label>Nombre:</label>
+      <label>Nombre Completo:</label>
           <input
             type="text" 
             value={client.nombre}
@@ -46,7 +47,7 @@ const handleSubmit = (event) => {
               setClient({ ...client, email: event.target.value })
             }
           />
-          <button>Enviar</button>
+          <button className="btnForm">Enviar</button>
           {error ? (
             <h4 style={{ color: "red" }}>
               Por favor verifique su información nuevamente
